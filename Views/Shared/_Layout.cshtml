@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Distribuidora Médica</title>
+    <link rel="icon" href="~/images/varios/icono.ico" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/ede4348c88.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&family=Raleway:wght@100;200&family=Wix+Madefor+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <nav class=" navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow pr-0 mr-0 align-items-center">
+                <div class="contenedor">
+                    <a class="" asp-area="" asp-controller="Home" asp-action="Index"><img class="logo-icon" src="~/images/varios/descarga.png" /></a>
+                    <nav class="navegador-principal">
+                        <div class="container">
+                            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                                <ul class="navbar-nav barra-layout">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><div>Inicio</div></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="about_us"><div>Nosotros</div></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact"><div>Contacto</div></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <partial name="_LoginPartial" />
+                </div>
+            </nav>
+
+            <nav class=" navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow pr-0 mr-0 align-items-center">
+                <div class="contenedor">
+                    <nav class="navegador-principal">
+                        <div class="container">
+                            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                                <ul class="navbar-nav barra-layout">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Productos" asp-action="Index"><div>Productos</div></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Tipos" asp-action="Index"><div>Tipos de artículos</div></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Secciones" asp-action="Index"><div>Secciones</div></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Marcas" asp-action="Index"><div>Marcas</div></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
+        }
+        else
+        {
+            <nav class=" navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow pr-0 mr-0 align-items-center">
+                <div class="contenedor">
+                    <a class="" asp-area="" asp-controller="Home" asp-action="Index"><img class="logo-icon" src="~/images/varios/descarga.png" /></a>
+
+                    <nav class="navegador-principal">
+                        <div class="container">
+                            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                                <ul class="navbar-nav barra-layout">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"><div>Inicio</div></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Productos" asp-action="Index"><div>Productos</div></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="about_us"><div>Nosotros</div></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact"><div>Contacto</div></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <partial name="_LoginPartial" />
+                </div>
+            </nav>
+
+        }
+
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <a class="btn-wpp" href="https://api.whatsapp.com/send/?phone=5493564506821&text&type=phone_number&app_absent=0" target="_blank" rel="noreferrer noopener">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <footer class="border-top footer text-muted">
+        <div class="footer-container">
+            <div class="separate-footer">
+                <div class="column-content">
+                    <h3>Encuéntrenos</h3>
+                    <div class="icon-part">
+                        <i class='bx bx-map'></i>
+                        <div>Bv. 9 de Julio 1655, San Francisco, Cba.</div>
+                    </div>
+                </div>
+                <div class="column-content">
+                    <h3>Llámenos</h3>
+                    <div class="icon-part">
+                        <i class='bx bx-phone'></i>
+                        <div>(03564) 420117 / 424517</div>
+                    </div>
+                </div>
+            </div>
+            <p>Distribuidora Médica SRL. Desarrollado por Luengo Matías</p>
+        </div>
+
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager

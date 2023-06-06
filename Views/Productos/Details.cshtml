@@ -1,0 +1,65 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model OrtopediaDM.Producto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="padding-top tittle">@Html.DisplayFor(model => model.nombre)</h1>
+
+<div>
+    @*<h4>Producto</h4>*@
+    <hr />
+    <dl class="row">
+        @*<dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.nombre)
+        </dd>*@
+        @*<dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>*@
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+        @*<dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.imagenArticulo)
+        </dt>*@
+        <dd class="col-sm-10">
+            @if (!string.IsNullOrEmpty(@Model.imagenArticulo))
+            {
+                <img src="~/images/productos/@Model.imagenArticulo" class="img-thumbnail" style="max-width:300px; max-height: 320px" asp-append-version="true" />
+            }
+        </dd>
+    </dl>
+    <dl>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.marca)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.marca.nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.tipo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.tipo.nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.tipo.seccion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.tipo.seccion.nombre)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+    }
+    <a asp-action="Index">Volver a Productos</a>
+</div>

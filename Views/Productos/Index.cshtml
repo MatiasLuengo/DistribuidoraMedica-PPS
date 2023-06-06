@@ -1,0 +1,116 @@
+﻿@*@model IEnumerable<OrtopediaDM.Producto>*@
+@model OrtopediaDM.ViewsModels.ProductoViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<h1 class="padding-top tittle">Productos</h1>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <p>
+        <a asp-action="Create">Cargar Nuevo</a>
+    </p>
+}
+
+<div class="grid-products-indexs">
+    <form class="padding-index" asp-action="index" method="get">
+        <p class="form-filter">
+            Nombre: <input type="text" asp-for="nombre" name="filtroNombre" />
+            Marca: <select name="marcaId" asp-items="@Model.Marcas"><option value="">Todas</option></select>
+            Tipo:  <select name="tipoId" asp-items="@Model.Tipos"><option value="">Todos</option></select>
+            Sección: <select name="seccionId" asp-items="@Model.Secciones"><option value="">Todas</option></select>
+            <input type="submit" value="Filtrar" />
+        </p>
+    </form>
+
+    <div class="products-container">
+        @foreach (var item in Model.Articulos)
+        {
+        <div class="product-container">
+            @if (!string.IsNullOrEmpty(@item.imagenArticulo))
+            {
+                <a class="" href="https://localhost:44364/Productos/Details/@item.Id">
+                    <img src="~/images/productos/@item.imagenArticulo" class="img-thumbnail product-img" asp-append-version="true" />
+                </a>
+            }
+            <a class="product-name" style="text-decoration:none" href="https://localhost:44364/Productos/Details/@item.Id">
+                @Html.DisplayFor(modelItem => item.nombre)
+            </a>
+            <a class="buttom-detail" style="text-decoration:none" asp-action="Details" asp-route-id="@item.Id">Descripción</a>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <a class="buttom-edit" style="text-decoration:none" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a class="buttom-delete" style="text-decoration:none" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a> <br />
+            }
+        </div>
+        }
+    </div>
+    @*<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Articulos[0].nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Articulos[0].descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Articulos[0].imagenArticulo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Articulos[0].marca)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Articulos[0].tipo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Articulos[0].tipo.seccion)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Articulos)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.descripcion)
+                    </td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(@item.imagenArticulo))
+                        {
+                            <img src="~/images/productos/@item.imagenArticulo" class="img-thumbnail" style="width:85px; height: 85px" asp-append-version="true" />
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.marca.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tipo.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tipo.seccion.nombre)
+                    </td>
+
+                    <td>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> <br />
+                            <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a> <br />
+                        }
+                        <a asp-action="Details" asp-route-id="@item.Id">Descripción</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@
+</div>
+
+    <partial name="_paginador" for="@Model.paginador" />

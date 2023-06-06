@@ -1,0 +1,59 @@
+﻿@model IEnumerable<OrtopediaDM.Marca>
+@{
+    ViewData["Title"] = "Index";
+}
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<h1 class="padding-top tittle">Marcas</h1>
+@if (SignInManager.IsSignedIn(User))
+{
+    <p class="padding-bottom">
+        <a asp-action="Create">Cargar Nueva</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.origen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.imagenLogo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.origen)
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(@item.imagenLogo))
+                    {
+                        <img src="~/images/marcas/@item.imagenLogo" class="img-thumbnail" style="max-width:75px; max-height: 75px" asp-append-version="true" />
+                    }
+                </td>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+<partial name="_paginador" for="@ViewData["paginador"]" />
