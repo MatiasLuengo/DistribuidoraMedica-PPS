@@ -18,7 +18,7 @@
     </div>
 
     <div class="flex-conteiner padding-bottom">
-        <img class="img-sec" src="~/images/varios/nosotros-1.png" />
+        <img class="img-principal" src="~/images/varios/DSC_6304-scaled.jpg" />
         <div class="flex-column">
             <h3>Nosotros</h3>
             <h4>
@@ -33,9 +33,16 @@
         <h3 class="padding-bottom">Destacados</h3>
     </div>
 
-    <div class="padding-bottom">
-        <tbody>
-            @foreach (var item in Model)
+    <div class="bg-image">
+        <div class="contenido-bg-image">
+            <h3 class="estetic-content">Estética y Cuidado Personal</h3>
+            <p class="estetic-content">Productos seleccionados para rejuvenecer tu piel y tonificar tus músculos.</p>
+            <a class="btn-estetic" href="https://localhost:44364/Productos?filtroNombre=&marcaId=&tipoId=&seccionId=6">VER PRODUCTOS SELECCIONADOS</a>
+        </div>
+    </div>
+    @*<div class="padding-bottom">
+            <tbody>
+                @foreach (var item in Model)
             {
                 <tr>
                     <td>
@@ -48,6 +55,6 @@
                     </td>
                 </tr>
             }
-        </tbody>
-    </div>
+            </tbody>
+        </div>*@
 </div>

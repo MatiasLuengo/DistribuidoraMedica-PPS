@@ -9,32 +9,33 @@
         <h2 class="us-content">Nosotros</h2>
         <img class="us-img" src="~/images/varios/vidriera-local-2.jpg" />
     </div>
-
-    <h2 class="tittle-our-staff">Nuestro Staff</h2>
-    <div class="our-staff">
-        <div class="staff">
-            <img class="img-staff" src="~/images/varios/foto-joaquin-300x300.png" />
-            <h2 class="name-staff">Joaquín Luengo</h2>
-            <p class="tittle-staff">Equipamiento, emergencia y ortopedia</p>
-            <p class="description-staff">Nuestra prioridad por la satisfacción del cliente se manifiesta en el desarrollo de marcas específicas para los canales de Ortopedia y Farmacia, para responder mejor a las necesidades de cada uno.</p>
+    <div class="container">
+        <h2 class="tittle-our-staff">Nuestro Staff</h2>
+        <div class="our-staff">
+            <div class="staff">
+                <img class="img-staff" src="~/images/varios/foto-joaquin-300x300.png" />
+                <h2 class="name-staff">Joaquín Luengo</h2>
+                <p class="tittle-staff">Equipamiento, emergencia y ortopedia</p>
+                <p class="description-staff">Nuestra prioridad por la satisfacción del cliente se manifiesta en el desarrollo de marcas específicas para los canales de Ortopedia y Farmacia, para responder mejor a las necesidades de cada uno.</p>
+            </div>
+            <div class="staff">
+                <img class="img-staff" src="~/images/varios/foto-carlos-300x300.png" />
+                <h2 class="name-staff">Carlos Verón</h2>
+                <p class="tittle-staff">Traumatología</p>
+                <p class="description-staff">Tenemos un equipo de ventas e instrumentadoras quirúrgicas que asisten al profesional médico en todo momento y lugar.</p>
+            </div>
         </div>
-        <div class="staff">
-            <img class="img-staff" src="~/images/varios/foto-carlos-300x300.png" />
-            <h2 class="name-staff">Carlos Verón</h2>
-            <p class="tittle-staff">Traumatología</p>
-            <p class="description-staff">Tenemos un equipo de ventas e instrumentadoras quirúrgicas que asisten al profesional médico en todo momento y lugar.</p>
-        </div>
-    </div>
 
-    <h2 class="tittle-our-staff">Nuestras Marcas</h2>
-    <div class="our-brands">
-        @foreach (var item in Model)
-        {
-            @if (!string.IsNullOrEmpty(@item.imagenLogo))
+        <h2 class="tittle-our-staff">Nuestras Marcas</h2>
+        <div class="our-brands">
+            @foreach (var item in Model)
             {
-                <img src="~/images/marcas/@item.imagenLogo" class="img-brands" asp-append-version="true" />
+                @if (!string.IsNullOrEmpty(@item.imagenLogo))
+                {
+                    <img src="~/images/marcas/@item.imagenLogo" class="img-brands" asp-append-version="true" />
+                }
             }
-        }
+        </div>
+        </div>
     </div>
-</div>
 
